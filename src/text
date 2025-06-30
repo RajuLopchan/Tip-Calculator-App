@@ -1,0 +1,141 @@
+// import { useState } from "react";
+// import {
+//   Container,
+//   TextField,
+//   Typography,
+//   Grid,
+//   Button,
+//   Box,
+//   Paper,
+// } from "@mui/material";
+
+
+// const tipOptions = [5, 10, 15, 25, 50];
+
+// function App() {
+//   const [bill, setBill] = useState<number>(0);
+//   const [tip, setTip] = useState<number>(0);
+//   const [customTip, setCustomTip] = useState<string>("");
+//   const [people, setPeople] = useState<number>(1);
+
+//   const tipPercentage = customTip ? parseFloat(customTip) : tip;
+
+//   const tipAmount = bill && people ? (bill * tipPercentage) / 100 / people : 0;
+//   const total = bill && people ? bill / people + tipAmount : 0;
+
+//   const handleReset = () => {
+//     setBill(0);
+//     setTip(0);
+//     setCustomTip("");
+//     setPeople(1);
+//   };
+
+//   return (
+//     <Container maxWidth="xs" sx={{ mt: 5 }}>
+//       <Typography variant="h5" align="center" gutterBottom>
+//         SPLI
+//         <br />
+//         TTER
+//       </Typography>
+
+//       <Paper elevation={3} sx={{ p: 3, borderRadius: 3 }}>
+//         <Grid container spacing={2}>
+//           <Grid item xs={12}>
+//             <Typography>Bill</Typography>
+//             <TextField
+//               fullWidth
+//               type="number"
+//               value={bill}
+//               onChange={(e) => setBill(parseFloat(e.target.value))}
+//               InputProps={{ startAdornment: <Typography>$</Typography> }}
+//             />
+//           </Grid>
+
+//           <Grid item xs={12}>
+//             <Typography>Select Tip %</Typography>
+//             <Grid container spacing={1}>
+//               {tipOptions.map((option) => (
+//                 <Grid item xs={4} key={option}>
+//                   <Button
+//                     fullWidth
+//                     variant={tip === option ? "contained" : "outlined"}
+//                     onClick={() => {
+//                       setTip(option);
+//                       setCustomTip("");
+//                     }}
+//                   >
+//                     {option}%
+//                   </Button>
+//                 </Grid>
+//               ))}
+//               <Grid item xs={4}>
+//                 <TextField
+//                   placeholder="Custom"
+//                   value={customTip}
+//                   onChange={(e) => {
+//                     setCustomTip(e.target.value);
+//                     setTip(0);
+//                   }}
+//                   size="small"
+//                 />
+//               </Grid>
+//             </Grid>
+//           </Grid>
+
+//           <Grid item xs={12}>
+//             <Typography>Number of People</Typography>
+//             <TextField
+//               fullWidth
+//               type="number"
+//               value={people}
+//               onChange={(e) => setPeople(parseInt(e.target.value) || 1)}
+//               InputProps={{
+//                 startAdornment: (
+//                   <Typography>
+//                     <span role="img" aria-label="person">
+//                       👤
+//                     </span>
+//                   </Typography>
+//                 ),
+//               }}
+//             />
+//           </Grid>
+
+//           <Grid item xs={12}>
+//             <Box
+//               sx={{
+//                 backgroundColor: "teal",
+//                 color: "white",
+//                 borderRadius: 2,
+//                 p: 2,
+//               }}
+//             >
+//               <Grid container justifyContent="space-between">
+//                 <Typography>Tip Amount / person</Typography>
+//                 <Typography>${tipAmount.toFixed(2)}</Typography>
+//               </Grid>
+//               <Grid container justifyContent="space-between">
+//                 <Typography>Total / person</Typography>
+//                 <Typography>${total.toFixed(2)}</Typography>
+//               </Grid>
+
+//               <Button
+//                 fullWidth
+//                 variant="contained"
+//                 sx={{
+//                   mt: 2,
+//                   backgroundColor: "#26a69a",
+//                 }}
+//                 onClick={handleReset}
+//               >
+//                 RESET
+//               </Button>
+//             </Box>
+//           </Grid>
+//         </Grid>
+//       </Paper>
+//     </Container>
+//   );
+// }
+
+// export default App;
