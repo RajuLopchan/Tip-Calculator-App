@@ -15,10 +15,8 @@ const TipButton: React.FC<TipButtonProps> = ({ label, onClick, selected }) => {
     <Button
       variant="contained"
       onClick={onClick}
+      fullWidth
       sx={{
-        width: { xs: '125px', md: '95px' },
-        fontSize: '1.2rem',
-        fontWeight: 700,
         backgroundColor: selected
           ? theme.palette.primary.main
           : theme.palette.background.paper,
@@ -26,7 +24,6 @@ const TipButton: React.FC<TipButtonProps> = ({ label, onClick, selected }) => {
           ? theme.palette.background.paper
           : theme.palette.background.default,
       }}
-      size="large"
     >
       {label}
     </Button>

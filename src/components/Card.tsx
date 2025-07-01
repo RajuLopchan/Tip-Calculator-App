@@ -18,8 +18,8 @@ function Card({
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.primary,
         borderRadius: 2,
-        p: 3,
-        mt: 4,
+        p: 2,
+        minHeight:'xs:aut0, md: 200px',
       }}
     >
       <Box
@@ -39,7 +39,7 @@ function Card({
           </Typography>
         </Box>
         <Typography
-          variant="h4"
+          variant="h5"
           sx={{
             color: theme.palette.primary.main,
             fontWeight: 700,
@@ -54,7 +54,6 @@ function Card({
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          mb: 4,
         }}
       >
         <Box>
@@ -66,10 +65,10 @@ function Card({
           </Typography>
         </Box>
         <Typography
-          variant="h4"
+          variant="h5"
           sx={{
             color: theme.palette.primary.main,
-            fontWeight: 500,
+            fontWeight: 700,
           }}
         >
           ${totalPerPerson.toFixed(2)}
@@ -82,15 +81,12 @@ function Card({
         onClick={onReset}
         sx={{
           py: 1.5,
-          mt: { xs: 2, md: 12 },
+          mt:{xs: 4, md: 21},
           textTransform: 'uppercase',
           fontSize: '1rem',
           fontWeight: 700,
           backgroundColor: theme.palette.primary.main,
           color: theme.palette.background.paper,
-          '&:hover': {
-            backgroundColor: theme.palette.primary.dark,
-          },
         }}
       >
         RESET

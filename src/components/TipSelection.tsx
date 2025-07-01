@@ -1,64 +1,77 @@
-import React from 'react';
-import { Box, Typography, TextField } from '@mui/material';
-import TipButton from './TipButton';
+import React from "react";
+import { Box, Grid, TextField, Typography } from "@mui/material";
+import TipButton from "./TipButton";
 
 interface Props {
   selectedTip: number | null;
   onSelectTip: (tip: number | null) => void;
-  customTip: number | null;
-  onCustomTipChange: (value: string) => void;
+  customTip: string;
+  setCustomTip: (val: string) => void;
 }
 
 const predefined = [5, 10, 15, 25, 50];
 
-const TipSelector: React.FC<Props> = ({
+const TipSelection: React.FC<Props> = ({
   selectedTip,
   onSelectTip,
   customTip,
-  onCustomTipChange,
+  setCustomTip,
 }) => (
-  <Box my={2}>
-    <Typography mb={1} color="text.secondary" fontWeight={700}>
+  <Box sx={{ my: 2 }}>
+    <Typography
+      variant="subtitle1"
+      sx={{ mb: 1, color: "#7f9c9f", fontWeight: 700 }}
+    >
       Select Tip %
     </Typography>
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 2,
-        justifyContent: 'space-between',
-      }}
-    >
-      {predefined.map((number) => (
-        <Box key={number}>
+
+    <Grid container spacing={2}>
+      {predefined.map((num) => (
+      <Grid size={{ xs: 6, sm: 6, md:4}}>
+
           <TipButton
-            label={`${number}%`}
-            selected={selectedTip === number}
-            onClick={() => onSelectTip(number)}
+            key={num}
+            label={`${num}%`}
+            selected={selectedTip === num}
+            onClick={() => onSelectTip(num)}
           />
-        </Box>
+        </Grid>
       ))}
 
-      <Box>
-        <TextField
-          label="Custom"
-          variant="outlined"
-          type="number"
-          value={customTip === null ? '' : customTip}
-          onChange={(e) => onCustomTipChange(e.target.value)}
-          size="small"
+      <Grid size={{ xs: 6, sm: 6, md:4 }}>
+
+        <Box
           sx={{
-            width: { xs: '125px', md: '95px' },
-            '& .MuiOutlinedInput-root': {
-              height: '48px',
-              fontSize: '1.2rem',
-              fontWeight: 700,
-            },
+            height: "100%",
+            overflow: "hidden",
           }}
-        />
-      </Box>
-    </Box>
+        >
+        <TextField
+            placeholder="Custom"
+            value={customTip}
+            onChange={(e) => {
+                setCustomTip(e.target.value);
+                onSelectTip(null);
+              }}
+            inputMode="decimal"
+            fullWidth
+            variant="outlined"
+            sx={{
+              "& input": {
+                textAlign: "center",
+                fontWeight: 700,
+                fontSize: "1.2rem",
+                padding: "0.2rem",
+              },
+              "& fieldset": { border: "none" },
+              bgcolor: "#f4fafa",
+              height: "100%",
+            }}
+          />
+        </Box>
+      </Grid>
+    </Grid>
   </Box>
 );
 
-export default TipSelector;
+export default TipSelection;
